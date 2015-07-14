@@ -24,7 +24,7 @@ package com.project.algorithm.unionfind;
  * @author Harish Kayarohanam
  */
 public class WeightedQuickUnionBySize extends QuickUnion {
-  private int[] size;
+  protected int[] size;
   
   /**
    * @param totalNumberOfElementsInWqubsDatastructure Total number of
@@ -56,10 +56,24 @@ public class WeightedQuickUnionBySize extends QuickUnion {
    */
   @Override
   public void union(final int element1, final int element2) {
+    unionBasedOnSize(element1, element2);
+  }
+
+  /**
+   * Finds the union of the subsets containing the elements&#46;
+   * But with the condition that the smaller of the
+   * two trees will be attached to the large tree.
+   * @param element1 integer representing the element.
+   * @param element2 integer representing the element.
+   * @return root integer representing the root of the resulting tree.
+   */
+  protected int unionBasedOnSize(final int element1, final int element2) {
     int element1Representative = find(element1);
     int element2Representative = find(element2);
+    int root;
     if (element1Representative == element2Representative) {
-      return;
+      root = element1Representative;
+      return root;
     }
     // check which representative should point to which 
     // based on the size of the tree.
@@ -67,10 +81,13 @@ public class WeightedQuickUnionBySize extends QuickUnion {
     if (size[element1Representative] <= size[element2Representative]) {
       elements[element1Representative] = element2Representative;
       size[element2Representative] += size[element1Representative];
+      root = element2Representative;
     } else {
       elements[element2Representative] = element1Representative;
       size[element1Representative] += size[element2Representative];
+      root = element1Representative;
     }
     count--;
+    return root;
   }
 }
