@@ -27,14 +27,14 @@ public class WeightedQuickUnionBySize extends QuickUnion {
   protected int[] size;
   
   /**
-   * @param totalNumberOfElementsInWqubsDatastructure Total number of
-   *        elements in the set. WQUBS is Weighted Quick Union By Size.
+   * @param totalNumberOfElementsInDatastructure Total number of
+   *        elements in the data structure.
    */
-  public WeightedQuickUnionBySize(int totalNumberOfElementsInWqubsDatastructure) {
-    count = totalNumberOfElementsInWqubsDatastructure;
-    elements = new int[totalNumberOfElementsInWqubsDatastructure];
-    size = new int[totalNumberOfElementsInWqubsDatastructure];
-    for (int i = 0; i < totalNumberOfElementsInWqubsDatastructure; i++) {
+  public WeightedQuickUnionBySize(final int totalNumberOfElementsInDatastructure) {
+    count = totalNumberOfElementsInDatastructure;
+    elements = new int[totalNumberOfElementsInDatastructure];
+    size = new int[totalNumberOfElementsInDatastructure];
+    for (int i = 0; i < totalNumberOfElementsInDatastructure; i++) {
       elements[i] = i;
       size[i] = 1;
     }

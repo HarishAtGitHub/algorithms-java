@@ -43,14 +43,14 @@ package com.project.algorithm.unionfind;
  * <u> Worst case running time </u>
  * <ul>
  *   <li> Union : O(1)(But union also involves find so it is 
- *        effectively O(N) or O(tree height)) </li>
- *   <li> Find : O(N) </li>
+ *        effectively O(tree height) and in worst case
+          it will be O(N)) </li>
+ *   <li> Find : O(tree height) and in worst case
+          it will be O(N)) </li>
  * </ul>
  * @author Harish Kayarohanam
  */
-public class QuickUnion implements UnionFind {
-  protected int[] elements;
-  protected int count;
+public class QuickUnion extends UnionFind {
   
   /*
    * Default Constructor to be used by the subclasses when
@@ -60,19 +60,14 @@ public class QuickUnion implements UnionFind {
    * class without the elements array initialized.
    */
   protected QuickUnion() {
-    
   }
   
   /**
-   * @param totalNumberOfElementsInQuickUnionDatastructure Total number of
+   * @param totalNumberOfElementsInDatastructure Total number of
    *        elements in the set.
    */
-  public QuickUnion(int totalNumberOfElementsInQuickUnionDatastructure) {
-    count = totalNumberOfElementsInQuickUnionDatastructure;
-    elements = new int[totalNumberOfElementsInQuickUnionDatastructure];
-    for (int i = 0; i < totalNumberOfElementsInQuickUnionDatastructure; i++) {
-      elements[i] = i;
-    }
+  public QuickUnion(final int totalNumberOfElementsInDatastructure) {
+    super(totalNumberOfElementsInDatastructure);
   }
   
   /**
@@ -82,6 +77,7 @@ public class QuickUnion implements UnionFind {
    * @param element1 integer representing the element.
    * @param element2 integer representing the element.
    */
+  @Override
   public void union(final int element1, final int element2) {
     int element1Representative = find(element1);
     int element2Representative = find(element2);
@@ -99,6 +95,7 @@ public class QuickUnion implements UnionFind {
    * @return identifier or representative of the
    *         subset containing the given element.
    */
+  @Override
   public int find(final int element) {
     int shiftingElement = element; 
     while (shiftingElement != elements[shiftingElement]) {
@@ -107,23 +104,4 @@ public class QuickUnion implements UnionFind {
     return shiftingElement;
   }
 
-  /**
-   * Finds whether 2 elements are in the same subset.
-   *
-   * @param element1 integer(element) whose location needs to be resolved.
-   * @param element2 integer(element) whose location needs to be resolved.
-   * @return true if the 2 elements are in the same subset, otherwise false.
-   */
-  public boolean connected(final int element1, final int element2) { 
-    return find(element1) == find(element2);
-  }
-
-  /**
-   * Counts the number of subsets.
-   *
-   * @return the number of subsets.
-   */
-  public int count() {
-    return count;
-  }
 }

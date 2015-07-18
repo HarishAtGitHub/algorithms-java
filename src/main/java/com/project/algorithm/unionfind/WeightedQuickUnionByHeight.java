@@ -25,14 +25,14 @@ public class WeightedQuickUnionByHeight extends QuickUnion {
   private int[] height;
   
   /**
-   * @param totalNumberOfElementsInWqubhDatastructure Total number of
-   *        elements in the set.Wqubh is Weighted Quick Union By Height.
+   * @param totalNumberOfElementsInDatastructure Total number of
+   *        elements in the data structure.
    */
-  public WeightedQuickUnionByHeight(int totalNumberOfElementsInWqubhDatastructure) {
-    count = totalNumberOfElementsInWqubhDatastructure;
-    elements = new int[totalNumberOfElementsInWqubhDatastructure];
-    height = new int[totalNumberOfElementsInWqubhDatastructure];
-    for (int i = 0; i < totalNumberOfElementsInWqubhDatastructure; i++) {
+  public WeightedQuickUnionByHeight(int totalNumberOfElementsInDatastructure) {
+    count = totalNumberOfElementsInDatastructure;
+    elements = new int[totalNumberOfElementsInDatastructure];
+    height = new int[totalNumberOfElementsInDatastructure];
+    for (int i = 0; i < totalNumberOfElementsInDatastructure; i++) {
       elements[i] = i;
       height[i] = 1;// initialize height as one as the are no children yet
     }

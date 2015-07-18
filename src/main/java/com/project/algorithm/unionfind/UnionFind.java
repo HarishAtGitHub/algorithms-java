@@ -1,7 +1,7 @@
 package com.project.algorithm.unionfind;
 
 /**
- * API Interface for UnionFind Algorithms.
+ * API for UnionFind Algorithms.
  * UnionFind Algorithm is an algorithm to
  * keep track of a set of elements partitioned
  * into a number of disjoint subsets(non overlapping sets i.e.,sets whose
@@ -29,7 +29,20 @@ package com.project.algorithm.unionfind;
  *  ].
  * @author Harish Kayarohanam
  */
-public interface UnionFind {
+public abstract class UnionFind {
+  protected int[] elements;
+  protected int count;
+
+  protected UnionFind() {
+  }
+
+  protected UnionFind(final int totalNumberOfElementsInDatastructure) {
+    count = totalNumberOfElementsInDatastructure;
+    elements = new int[totalNumberOfElementsInDatastructure];
+    for (int i = 0; i < totalNumberOfElementsInDatastructure; i++) {
+      elements[i] = i;
+    }
+  }
 
   /**
    * Finds the union of the subsets containing the elements&#46;
@@ -38,7 +51,7 @@ public interface UnionFind {
    * @param element1 integer representing the element.
    * @param element2 integer representing the element.
    */
-  void union(int element1, int element2);
+  protected abstract void union(int element1, int element2);
 
   /**
    * Finds the subset containing the given element.
@@ -47,7 +60,7 @@ public interface UnionFind {
    * @return identifier or representative of the
    *         subset containing the given element.
    */
-  int find(int element);
+  protected abstract int find(int element);
 
   /**
    * Finds whether 2 elements are in the same subset.
@@ -56,12 +69,16 @@ public interface UnionFind {
    * @param element2 integer(element) whose location needs to be resolved.
    * @return true if the 2 elements are in the same subset, otherwise false.
    */
-  boolean connected(int element1, int element2);
+  public boolean connected(final int element1, final int element2) {
+    return find(element1) == find(element2);
+  }
 
   /**
    * Counts the number of subsets.
    *
    * @return the number of subsets.
    */
-  int count();
+  public int count() {
+    return count;
+  }
 }

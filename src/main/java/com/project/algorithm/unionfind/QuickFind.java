@@ -36,20 +36,17 @@ package com.project.algorithm.unionfind;
  * </ul>
  * @author Harish Kayarohanam
  */
-public class QuickFind implements UnionFind {
-  private int[] elements;
-  private int count;
-  
+public class QuickFind extends UnionFind {
+
+  protected QuickFind() {
+  }
+
   /**
-   * @param totalNumberOfElementsInQuickFindDatastructure Total number of
+   * @param totalNumberOfElementsInDatastructure Total number of
    *        elements in the set.
    */
-  public QuickFind(int totalNumberOfElementsInQuickFindDatastructure) {
-    count = totalNumberOfElementsInQuickFindDatastructure;
-    elements = new int[totalNumberOfElementsInQuickFindDatastructure];
-    for (int i = 0; i < totalNumberOfElementsInQuickFindDatastructure; i++) {
-      elements[i] = i;
-    }
+  public QuickFind(final int totalNumberOfElementsInDatastructure) {
+    super(totalNumberOfElementsInDatastructure);
   }
   
   /**
@@ -59,6 +56,7 @@ public class QuickFind implements UnionFind {
    * @param element1 integer representing the element.
    * @param element2 integer representing the element.
    */
+  @Override
   public void union(final int element1, final int element2) {
     int element1Representative = find(element1);
     int element2Representative = find(element2);
@@ -80,27 +78,9 @@ public class QuickFind implements UnionFind {
    * @return identifier or representative of the
    *         subset containing the given element.
    */
+  @Override
   public int find(final int element) {
     return elements[element];
   }
 
-  /**
-   * Finds whether 2 elements are in the same subset.
-   *
-   * @param element1 integer(element) whose location needs to be resolved.
-   * @param element2 integer(element) whose location needs to be resolved.
-   * @return true if the 2 elements are in the same subset, otherwise false.
-   */
-  public boolean connected(final int element1, final int element2) {
-    return elements[element1] == elements[element2];
-  }
-
-  /**
-   * Counts the number of subsets.
-   *
-   * @return the number of subsets.
-   */
-  public int count() {
-    return count;
-  }
 }

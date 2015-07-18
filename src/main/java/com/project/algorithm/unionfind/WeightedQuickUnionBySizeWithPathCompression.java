@@ -13,13 +13,12 @@ public class WeightedQuickUnionBySizeWithPathCompression extends WeightedQuickUn
   
   /** 
    * Initialize the datastructure.
-   * @param totalNumberOfElementsInWqubsPcDatastructure is the number of 
-   *        elements in the datastructure, where WqubhPc is
-   *        WeightedQuickUnionBySizePathCompressed.
+   * @param totalNumberOfElementsInDatastructure is the number of
+   *        elements in the datastructure.
    */
   public WeightedQuickUnionBySizeWithPathCompression(
-      int totalNumberOfElementsInWqubsPcDatastructure) {
-    super(totalNumberOfElementsInWqubsPcDatastructure);
+      int totalNumberOfElementsInDatastructure) {
+    super(totalNumberOfElementsInDatastructure);
   }
 
   /**
